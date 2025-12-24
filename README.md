@@ -1,4 +1,6 @@
-# Welcome to your Lovable project
+# Puzzle-e-Sultan - The Royal Quiz Arena
+
+A multiplayer quiz game built with React, Vite, and Supabase.
 
 ## Project info
 
