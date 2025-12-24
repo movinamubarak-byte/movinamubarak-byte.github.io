@@ -60,7 +60,43 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Environment Variables
+
+This project requires Supabase environment variables to function:
+
+- `VITE_SUPABASE_URL` - Your Supabase project URL
+- `VITE_SUPABASE_PUBLISHABLE_KEY` - Your Supabase anon/public key
+
+### Local Development
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
+```
+
+### GitHub Pages Deployment
+
+1. Go to your repository Settings → Secrets and variables → Actions
+2. Add the following repository secrets:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_PUBLISHABLE_KEY`
+3. The GitHub Actions workflow will automatically use these secrets during build
+
 ## How can I deploy this project?
+
+### GitHub Pages (Automatic)
+
+This project is configured for automatic deployment to GitHub Pages via GitHub Actions. Simply push to the `main` branch and the workflow will build and deploy your site.
+
+1. Ensure environment variables are set as repository secrets (see above)
+2. Push your code to the `main` branch
+3. Go to repository Settings → Pages
+4. Under "Source", select "GitHub Actions"
+5. Your site will be available at `https://movinamubarak-byte.github.io`
+
+### Lovable
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 

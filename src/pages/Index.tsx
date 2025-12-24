@@ -28,6 +28,9 @@ const Index = () => {
     resetGame,
   } = useGameSession();
 
+  // Check for Supabase configuration
+  const hasSupabaseConfig = import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+
   // Check for existing player session
   useEffect(() => {
     const storedPlayerId = localStorage.getItem('playerId');
@@ -42,6 +45,29 @@ const Index = () => {
       }
     }
   }, [players, setCurrentPlayerId]);
+
+  // Show error if Supabase is not configured
+  if (!hasSupabaseConfig) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
+        <div className="text-center p-8 bg-white/10 backdrop-blur-lg rounded-lg border border-white/20 max-w-md">
+          <div className="text-6xl mb-4">⚠️</div>
+          <h1 className="text-2xl font-bold text-white mb-4">Configuration Required</h1>
+          <p className="text-white/80 mb-4">
+            This application requires Supabase environment variables to function.
+          </p>
+          <div className="text-left bg-black/20 p-4 rounded text-sm text-white/90 font-mono">
+            <p className="mb-2">Please set the following environment variables:</p>
+            <p className="mb-1">• VITE_SUPABASE_URL</p>
+            <p>• VITE_SUPABASE_PUBLISHABLE_KEY</p>
+          </div>
+          <p className="text-white/60 text-sm mt-4">
+            For GitHub Pages, add these as repository secrets and update the workflow.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   const handleJoinGame = async (alias: string, team: TeamType) => {
     const playerId = await joinGame(alias, team);
