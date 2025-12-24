@@ -69,12 +69,18 @@ This project requires Supabase environment variables to function:
 
 ### Local Development
 
-Create a `.env` file in the root directory:
+1. Copy the example environment file:
+   ```bash
+   cp env.example .env
+   ```
 
-```env
-VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
-```
+2. Edit `.env` and add your Supabase credentials:
+   ```env
+   VITE_SUPABASE_URL=https://your-project-id.supabase.co
+   VITE_SUPABASE_PUBLISHABLE_KEY=your-anon-key-here
+   ```
+
+   **Note:** The `.env` file is gitignored and will NOT be committed to the repository (this is correct for security).
 
 ### GitHub Pages Deployment
 
